@@ -1,64 +1,8 @@
 pragma solidity 0.7.0;
 
-interface UniswapFactory {
-    function createPair(address tokenA, address tokenB)
-        external
-        returns (address pair);
-
-    function getPair(address tokenA, address tokenB)
-        external
-        view
-        returns (address pair);
-}
-
-interface UniswapV2Router {
-    function addLiquidity(
-        address tokenA,
-        address tokenB,
-        uint256 amountADesired,
-        uint256 amountBDesired,
-        uint256 amountAMin,
-        uint256 amountBMin,
-        address to,
-        uint256 deadline
-    )
-        external
-        returns (
-            uint256 amountA,
-            uint256 amountB,
-            uint256 liquidity
-        );
-
-    function removeLiquidity(
-        address tokenA,
-        address tokenB,
-        uint256 liquidity,
-        uint256 amountAMin,
-        uint256 amountBMin,
-        address to,
-        uint256 deadline
-    ) external returns (uint256 amountA, uint256 amountB);
-
-    function swapExactTokensForTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external returns (uint256[] memory amounts);
-}
-
-interface IERC20 {
-    function approve(address spender, uint256 amount)
-        external
-        returns (bool success);
-
-    function transferFrom(
-        address from,
-        address to,
-        uint256 value
-    ) external returns (bool);
-}
+import "./Interfaces/IERC20.sol";
+import "./Interfaces/UniswapV2Router.sol";
+import "./Interfaces/UniswapFactory.sol";
 
 contract MyProject {
     UniswapFactory factory =
